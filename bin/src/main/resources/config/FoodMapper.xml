@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="food">
+
+	<select id="searchAll" resultType="food">
+		select* from food order by
+		code
+	</select>
+
+	<select id="selectOne" parameterType="java.lang.Integer"
+		resultType="food">
+		select* from food where code = #{code}
+	</select>
+
+
+	<select id='search' resultType="food"
+		parameterType="java.util.HashMap">
+		select * from food
+		<where>
+			<if test="key != null">
+				<choose>
+					<when test="key == 'name'">
+						name like concat('%', #{word}, '%')
+					</when>
+					<when test="key == 'maker'">
+						maker like concat('%', #{word}, '%')
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+
+	<update id="countUp" parameterType="java.lang.Integer" >
+		update food set count =count+1 where code= #{code}
+	</update>
+
+	<update id="update" parameterType="food" >
+		update food set maker=#{maker},material=#{material},allergy=#{allergy},img=#{img} where code= #{code}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+

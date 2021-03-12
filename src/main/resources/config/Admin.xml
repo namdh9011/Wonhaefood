@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+	<select id="selectAll" resultType="admin" >
+		select * from admpage
+	</select>
+	
+	<insert id="insert" parameterType="admin">
+		insert into admpage(num,code,id,maker,material,comment,img) values(null,#{code},#{id},#{maker},#{material},#{comment},#{img})
+	</insert>
+	<delete id="delete" parameterType="String">
+		delete from admpage where num = #{num}
+	</delete>
+	
+	<insert id="insertfortune" parameterType="String">
+		insert into lucky(comment) values(#{comment});
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+

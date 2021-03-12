@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mymenuweek">
+	<select id="selectAll" parameterType="java.lang.String" resultType="mymenuweek" >
+		select * from mymenuweek where id = #{id} order by month, week
+	</select>
+
+	<select id="selectMonthAll" parameterType="mymenuweek" resultType="mymenuweek" >
+		select * from mymenuweek where id=#{id} and month = #{month} order by week
+	</select>
+	<select id="selectWeekOne" parameterType="mymenuweek" resultType="mymenuweek" >
+		select * from mymenuweek where id=#{id} and month = #{month} and week = #{week} order by meal
+	</select>
+	
+	<select id="selectOne" parameterType="java.lang.String" resultType="mymenuweek" >
+		select * from mymenuweek where num = #{num}
+	</select>
+	<select id="selectmonweekmeal" parameterType="mymenuweek" resultType="mymenuweek" >
+		select * from mymenuweek where month = #{month} and week = #{week} and meal = #{meal} and id=#{id};
+	</select>
+	<insert id="insertmonweek" parameterType="mymenuweek">
+		insert into mymenuweek (id, month, week,meal, mon , tue, wed, thu, fri, sat, sun, comment) values(#{id}, #{month}, #{week},#{meal},"","","","","","","",null)
+	</insert>
+	<update id="updatemonweek" parameterType="mymenuweek">
+		update mymenuweek set meal=#{meal}, mon = #{mon},tue = #{tue},wed = #{wed},thu = #{thu},fri = #{fri},sat = #{sat},sun = #{sun}  where num =#{num}
+	</update>
+	<delete id="deleteone" parameterType="mymenuweek">
+		delete from mymenuweek where id=#{id} and month=#{month} and week=#{week};
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+

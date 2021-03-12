@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+	<select id="selectAll" resultType="board">
+		select * from board
+	</select>
+	<select id="selectOne" parameterType="java.lang.String"
+		resultType="board">
+		select * from board where num = #{num}
+	</select>
+
+	<update id="countUp" parameterType="board">
+		update board set count =
+		count+1 where num = #{num}
+	</update>
+
+	<insert id="insert" parameterType="board">
+		insert into board(id, name,
+		wdate, title, content) values(#{id}, #{name},
+		sysdate(), #{title},
+		#{content})
+	</insert>
+
+	<update id="update" parameterType="board">
+		update board set title =
+		#{title},content = #{content} where num = #{num}
+	</update>
+
+	<delete id="delete" parameterType="board">
+		delete from board where num =
+		#{num}
+	</delete>
+
+	<select id="findId" parameterType="java.lang.String"
+		resultType="board">
+		select * from board where id like concat('%',#{id},'%')
+	</select>
+
+	<select id="findTitle" parameterType="java.lang.String"
+		resultType="board">
+		select * from board where title like
+		concat('%',#{title},'%')
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="qna">
+	
+	<select id="selectAll" resultType="qna">
+    select * from qna
+  </select>
+  <select id="selectOne" parameterType="java.lang.String" resultType="qna">
+    select * from qna where num = #{num}
+  </select>
+  
+  <update id="countUp" parameterType="qna">
+  	update qna set count = count+1 where num = #{num}
+  </update>
+
+  <insert id="insert" parameterType="qna">
+  	insert into qna(id, name, wdate, title, content,comment) values(#{id}, #{name}, sysdate(), #{title}, #{content},null)
+  </insert>
+
+  <update id="updateContent" parameterType="qna">
+  	update qna set title = #{title},content = #{content} where num = #{num}
+  </update>
+  
+  <update id="updateComment" parameterType="qna">
+  	update qna set comment = #{comment} where num = #{num}
+  </update>
+ 
+  <delete id="delete" parameterType="qna">
+  	delete from qna where num = #{num}
+  </delete>
+  
+   <select id="findId" parameterType="java.lang.String" resultType="qna">
+  	select * from qna where id like concat('%',#{id},'%')
+  </select>
+  <select id="findTitle" parameterType="java.lang.String" resultType="qna">
+  	select * from qna where title like concat('%',#{title},'%')
+  </select> 
+</mapper>
+
+
+
+
+
+
+
+
+

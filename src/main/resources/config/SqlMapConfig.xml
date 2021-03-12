@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- MyBatis Query를 위한 Xml에서 resultType, parametertype 으로  
+		     사용할  VO 클래스에 대한 별칭 설정 
+		  Java AIP에 대한 별칭 설정 정보 : org.apache.ibits.type.TypeAliasRegistry 
+		  -->
+		<typeAlias type="com.safe.vo.Food"   		alias="food"/>
+		<typeAlias type="com.safe.vo.Member"   		alias="member"/>
+		<typeAlias type="com.safe.vo.Board"   		alias="board"/>
+		<typeAlias type="com.safe.vo.MyFood"   		alias="myfood"/>
+		<typeAlias type="com.safe.vo.QnA"   		alias="qna"/>
+		<typeAlias type="com.safe.vo.MyMenuWeek"   		alias="mymenuweek"/>
+		<typeAlias type="com.safe.vo.Admin"   		alias="admin"/>
+		<typeAlias type="com.safe.vo.Profile"   		alias="profile"/>
+	</typeAliases>
+	<mappers>
+	 <mapper resource="config/FoodMapper.xml" />
+	 <mapper resource="config/MemberMapper.xml" />
+	 <mapper resource="config/BoardMapper.xml" />
+	 <mapper resource="config/QnAMapper.xml" />
+	 <mapper resource="config/MyMenuMapper.xml" />
+	 <mapper resource="config/Admin.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

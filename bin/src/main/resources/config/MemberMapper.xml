@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="member">
+	
+	<select id="checkMember" resultType="member">
+		select* from member where id = #{id} and pw = #{pw}
+	</select>
+
+	<select id="selectOne" parameterType="java.lang.String"
+		resultType="member">
+		select* from member where id = #{x}
+	</select>
+
+	<insert id="insert" parameterType="member">
+		insert into member(id,pw,name,phone,allergy) values(#{id},#{pw},#{name},#{phone},#{allergy})
+	</insert>
+
+	<update id ="update" parameterType="member" >
+		update member set pw = #{pw} ,phone = #{phone} , allergy = #{allergy} where id =#{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.String">
+		delete from member where id=#{x}
+	</delete>
+	
+	
+	
+	
+	<select id="AllMyfood" parameterType="String" resultType="myfood">
+		select * from myfood where id=#{id}
+	</select>
+	
+	<select id="selectMyfood" parameterType="myfood" resultType="myfood">
+		select * from myfood where id=#{id} and code=#{code}
+	</select>
+	
+	<insert id="insertMyfood" parameterType="myfood">
+		insert into myfood(id,code,count) value(#{id},#{code},#{count})
+	</insert>
+	
+	<delete id="deleteMyfood" parameterType="myfood">
+		delete from myfood where id=#{id} and code=#{code}
+	</delete>
+	
+	<update id="updateMyfood" parameterType="myfood">
+		update myfood set count=#{count} where id=#{id} and code=#{code}
+	</update>
+	
+	
+	<update id="updateProfile" parameterType="profile">
+		update profile set img=#{img} where id=#{id};
+	</update>
+	
+	<update id="updateFortune" parameterType="profile">
+		update profile set fortune=#{fortune} where id=#{id};
+	</update>
+	
+	<insert id="insertProfile" parameterType="profile">
+		insert into profile(id,img) value(#{id},#{img})
+	</insert>
+	
+	<update id="defaultProfile" parameterType="java.lang.String">
+		update profile set img='resources/profile/noimg.jpg' where id=#{id};
+	</update>
+	
+	<select id="selectProfile" parameterType="java.lang.String"
+		resultType="profile">
+		select* from profile where id = #{x}
+	</select>
+	
+	<select id="selectFortune" parameterType="int" resultType="String">
+		select comment from lucky where num = #{num}
+	</select>
+	<select id="selectMaxNum" resultType="int">
+		select max(num) from lucky
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
